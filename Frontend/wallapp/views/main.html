@@ -1,0 +1,60 @@
+
+<!-- Container for message posting begins -->
+<div class="container" ng-hide="!wall.isLoggedIn">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Post your thoughts!
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="input-group" >
+						<textarea class="form-control" rows="3" id="walltextbox" ng-model="wall.wText" ng-disabled="!wall.isLoggedIn" autofocus>
+						</textarea>
+						<span class="input-group-addon btn btn-info" ng-click="wall.postMessage()">Post it!</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Container for message posting ends -->
+
+<!-- Container for wall display begins -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						Latest Wall Posts
+					</h3>
+				</div>
+				<div class="panel-body">
+					<h4 class="text-center" ng-show="wall.posts.length==0">{{wall.noMsgs}}</h4>
+                    <ul class="wallpost" ng-repeat="post in wall.posts | orderBy:'-created'" ng-hide="!wall.posts">
+                        <li class="left clearfix">
+	                        <span class="pull-left">
+	                            <img src="img/profile.png" alt="User Avatar" id="profilepic" class="img-circle" />
+	                        </span>
+                            <div class="wallpost-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{post.display_name}}</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> {{post.created | date:'medium'}}</small>
+                                </div>
+                                <p>
+                                    {{post.body}}
+                                </p>
+                            </div>
+                        </li>
+                        
+                    </ul>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Container for wall display ends -->

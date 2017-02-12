@@ -1,0 +1,51 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="text-center">
+				<h2 class="page-header">Account Login</h2>
+				<div ng-show="nav.loading">
+					<img id="postloader" src="./img/loader.gif" >
+					<h3 class="text-success">Logging In</h3>	
+				</div>
+				<div class="row show-hide-message fade-in-out" ng-show="nav.succMsg">
+					<div class="alert alert-success" ng-show="nav.succMsg">{{nav.succMsg}}</div>
+				</div>
+
+				<div class="row show-hide-message fade-in-out" ng-show="nav.errMsg">
+					<div class="alert alert-danger" ng-show="nav.errMsg">{{nav.errMsg}} </div>
+				</div>
+			</div>
+			<!-- Login form begins -->
+			<form name="logForm" ng-submit="nav.logIn(userdata, logForm.$valid)" ng-hide="nav.succMsg" class="fade-in-out" novalidate>
+				<div ng-class="{'has-success':(logForm.logemail.$valid && !logForm.logemail.$pristine), 'has-error':(!logForm.logemail.$valid && !logForm.logemail.$pristine) || (!logForm.logemail.$valid && logForm.$submitted)}">
+					<label for="lemail">Email</label>
+					<input type="email" name="logemail" id="lemail" autofocus ng-disabled="nav.loading" class="form-control" placeholder="Your registered email" ng-model="nav.userdata.email" required>
+					<p class="help-block" ng-show="(!logForm.logemail.$pristine && logForm.logemail.$error.required) || (logForm.$submitted && logForm.logemail.$error.required)">This field is required</p>
+				</div>
+				<br>
+				<div ng-class="{'has-success':(logForm.logpass.$valid && !logForm.logpass.$pristine), 'has-error':(!logForm.logpass.$valid && !logForm.logpass.$pristine) || (!logForm.logpass.$valid && logForm.$submitted)}">
+					<label for="lpass">Password</label>
+					<input type="password" name="logpass" id="lpass" ng-disabled="nav.loading" class="form-control" placeholder="Password" ng-model="nav.userdata.password" required>
+					<p class="help-block" ng-show="(!logForm.logpass.$pristine && logForm.logpass.$error.required) || (logForm.$submitted && logForm.logpass.$error.required)">This field is required</p>
+					
+				</div>
+				<br>
+				<div class="row text-center">
+					<a class="text-danger" href="#/passwordrecovery">Forgot Password?</a>
+					<br>
+					<br>
+					<button type="submit" ng-disabled="nav.loading" class="btn btn-info">Log In</button>
+					
+					
+				</div>
+			</form>
+			<!-- Login form ends -->
+		</div>
+	</div>
+</div>
+
+
+
+
+
+

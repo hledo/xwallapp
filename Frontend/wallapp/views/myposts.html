@@ -1,0 +1,36 @@
+<!-- Container for personal wall display begins -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						My Wall Posts
+					</h3>
+				</div>
+				<div class="panel-body">
+					<h4 class="text-center" ng-show="!mywall.posts">{{mywall.noMsgs}}</h4>
+                    <ul class="wallpost" ng-repeat="post in mywall.posts | orderBy:'-created'" ng-hide="!mywall.posts">
+                        <li class="left clearfix">
+	                        <span class="pull-left">
+	                            <img src="img/profile.png" alt="User Avatar" id="profilepic" class="img-circle" />
+	                        </span>
+                            <div class="wallpost-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{post.display_name}}</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> {{post.created | date:'medium'}}</small>
+                                </div>
+                                <p>
+                                    {{post.body}}
+                                </p>
+                            </div>
+                        </li>
+                        
+                    </ul>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Container for personal wall display ends -->

@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="text-center">
+				<h2 class="page-header">Forgot your password?</h2>
+				<div ng-show="pass.loading">
+					<img id="postloader" src="./img/loader.gif" >	
+				</div>
+				<div class="row show-hide-message fade-in-out" ng-show="pass.successrMsg">
+					<div class="alert alert-success" ng-show="pass.successrMsg">{{pass.successrMsg}}</div>
+				</div>
+
+				<div class="row show-hide-message fade-in-out" ng-show="pass.errorMsg">
+					<div class="alert alert-danger" ng-show="pass.errorMsg">{{pass.errorMsg}} </div>
+				</div>
+			</div>
+			<!-- Reset form begins -->
+			<form name="userForm" ng-submit="pass.sendPassword(resetData, userForm.$valid);" ng-hide="pass.successrMsg" class="fade-in-out" novalidate>
+
+				<label class="text-center">Please enter the e-mail address that you used for registering</label>
+				<input type="email" name="logemail" autofocus ng-disabled="pass.loading" class="form-control" placeholder="Your registered email" ng-model="pass.resetData.email" required>
+				<p class="help-block" ng-show="(!logForm.logemail.$pristine && logForm.logemail.$error.required) || (logForm.$submitted && logForm.logemail.$error.required)">This field is required</p>
+
+				<br>
+
+				<div class="text-center">
+					<button type="submit" ng-disabled="pass.loading" class="btn btn-info">Send password Recovery Email</button>
+				</div>
+				
+			</form>
+			<!-- Reset form ends -->
+		</div>
+	</div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+{
+  "name": "wallapp",
+  "version": "1.0.0",
+  "description": "Wall App (Front and Back-end) that Serves as a Test for XimplIT",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "xwallapp"
+  },
+  "keywords": [
+    "xwallapp"
+  ],
+  "author": "Hector Toledo",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
+    "jsonwebtoken": "^7.2.1",
+    "mongoose": "^4.8.1",
+    "morgan": "^1.8.0",
+    "nodemailer": "^3.0.2",
+    "nodemailer-sendgrid-transport": "^0.2.0"
+  }
+}

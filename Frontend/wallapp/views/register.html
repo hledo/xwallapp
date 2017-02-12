@@ -1,0 +1,89 @@
+
+
+
+<div class="container">
+
+
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="text-center">
+				<h2 class="page-header">Account Registration</h2>
+				<img id="postloader" src="./img/loader.gif" ng-show="register.loading">
+
+				<div class="row show-hide-message fade-in-out" ng-show="register.succMsg">
+					<div class="alert alert-success" >{{register.succMsg}}</div>
+				</div>
+
+				<div class="row show-hide-message fade-in-out" ng-show="register.errMsg">
+					<div class="alert alert-danger" >{{register.errMsg}} </div>
+				</div>
+				
+			</div>
+			<!-- Register form begins -->
+			<form name="regForm" ng-submit="register.regUser(userdata, regForm.$valid)" ng-hide="register.succMsg" class="fade-in-out" novalidate>
+				
+				<div ng-class="{'has-success':(regForm.fname.$valid && !regForm.fname.$pristine), 'has-error':(!regForm.fname.$valid && !regForm.fname.$pristine) || (!regForm.fname.$valid && regForm.$submitted)}">
+					<label>First Name <span ng-show="!register.userdata.first_name" class="text-danger">*</span></label>
+					<input type="text" name="fname" autofocus ng-disabled="register.loading" class="form-control" placeholder="First Name" ng-model="register.userdata.first_name" required>
+					<p class="help-block" ng-show="(!regForm.fname.$pristine && regForm.fname.$error.required) || (regForm.$submitted && regForm.fname.$error.required)">This field is required</p>
+
+
+					
+				</div>
+				<br>
+
+				<div class="form-group">
+					<label>Last Name (Optional)</label>
+					<input type="text" ng-disabled="register.loading" class="form-control" placeholder="Last Name" ng-model="register.userdata.last_name">
+
+				</div>
+
+				<div ng-class="{'has-success':(regForm.dname.$valid && !regForm.dname.$pristine && !register.invalidDisp), 'has-error':(!regForm.dname.$valid && !regForm.dname.$pristine) || (!regForm.dname.$valid && regForm.$submitted)||register.invalidDisp}">
+					<label>Display Name <span ng-show="!register.userdata.display_name" class="text-danger">*</span></label>
+					<input type="text" name="dname" ng-disabled="register.loading" class="form-control" placeholder="The name that everyone will see" ng-model="register.userdata.display_name" ng-blur="register.checkDispName(userdata)" required>
+					<p class="help-block" ng-show="(!regForm.dname.$pristine && regForm.dname.$error.required) || (regForm.$submitted && regForm.dname.$error.required)">This field is required</p>
+					<p class="help-block" ng-show="register.dispMsg && regForm.dname.$valid">{{register.dispMsg}}</p>
+
+				</div>
+				<br>
+
+				<div ng-class="{'has-success':(regForm.email.$valid && !regForm.email.$pristine && !register.invalidEmail), 'has-error':(!regForm.email.$valid && !regForm.email.$pristine) || (!regForm.email.$valid && regForm.$submitted)||register.invalidEmail}">
+					<label>Email <span ng-show="!register.userdata.email" class="text-danger">*</span></label>
+					<input type="email" name="email" ng-disabled="register.loading" class="form-control" placeholder="Email Address" ng-model="register.userdata.email" ng-blur="register.checkEmail(userdata)" required>
+					<p class="help-block" ng-show="(!regForm.email.$pristine && regForm.email.$error.required) || (regForm.$submitted && regForm.email.$error.required)">There must be a valid email address</p>
+					<p class="help-block" ng-show="register.emailMsg && regForm.email.$valid">{{register.emailMsg}}</p>
+
+				</div>
+				<br>
+				<div ng-class="{'has-success':(regForm.firstPass.$valid && !regForm.firstPass.$pristine), 'has-error':(!regForm.firstPass.$valid && !regForm.firstPass.$pristine) || (!regForm.firstPass.$valid && regForm.$submitted)}">
+					<label>Password <span ng-show="!firstPass" class="text-danger">*</span></label>
+					<input type="password" name="firstPass" ng-disabled="register.loading" class="form-control" placeholder="Password" ng-model="firstPass" required>
+					<p class="help-block" ng-show="(!regForm.firstPass.$pristine && regForm.firstPass.$error.required) || (regForm.$submitted && regForm.firstPass.$error.required)">This field is required</p>
+					
+				</div>
+				<br>
+				<div ng-class="{'has-success':confirmed && !regForm.confirm.$error.required, 'has-error':(!confirmed && !regForm.confirm.$error.required)||(regForm.confirm.$error.required && !regForm.confirm.$pristine)||(regForm.$submitted && regForm.confirm.$error.required)}">
+					<label>Confirm Password <span ng-show="!confirm" class="text-danger">*</span></label>
+					<input type="password" name="confirm" ng-disabled="register.loading" class="form-control" placeholder="Password" ng-model="confirm" pass-match="{{[firstPass]}}" ng-change="register.userdata.password=confirm" required>
+					<p class="help-block" ng-show="(!regForm.confirm.$pristine && regForm.confirm.$error.required) || (regForm.$submitted && regForm.confirm.$error.required)">This field is required</p>
+					<p class="help-block" ng-show="!confirmed && !regForm.confirm.$pristine &&regForm.firstPass.$valid">Passwords don't match</p>
+					
+				</div>
+
+
+				<br>
+				<div class="text-center">
+					<button type="submit" ng-disabled="register.loading" class="btn btn-success">Register</button>
+										
+				</div>
+				
+			</form>
+
+
+
+			<!-- Register form ends -->
+
+		</div>
+	</div>
+</div>
+
