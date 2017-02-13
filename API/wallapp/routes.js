@@ -5,7 +5,8 @@ var secret = 'thewall';
 var nodemailer = require('nodemailer');
 var sgTransport = require('nodemailer-sendgrid-transport');
 
-module.exports = function(router){
+
+module.exports = function(router, io){
 	//Sendgrid credentials object for email sending
 	var options = {
 		auth:{
@@ -277,6 +278,12 @@ module.exports = function(router){
 					response.json({success:false,message:"There was an error posting this message."});
 				}else{
 					response.json({success:true,message:"Message posted!"});
+					//Making msg object for socket sending
+					var newMsg = {
+						who: request.body.display_name
+					};
+					//Sending msg object through socket
+					io.emit('message', newMsg);
 				}
 			});
 		}

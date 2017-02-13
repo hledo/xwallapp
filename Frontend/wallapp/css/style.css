@@ -1,6 +1,13 @@
 img{
 	width:100%;
 }
+a{
+  cursor:pointer;
+}
+
+#hoverpointer{
+  cursor:pointer;
+}
 
 #postloader{
 	width: 64px;
@@ -27,31 +34,45 @@ img{
 
 .wallpost
 {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .wallpost li
 {
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px dotted #B3A9A9;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #B3A9A9;
 }
 
 .wallpost li.left .wallpost-body
 {
-    margin-left: 60px;
+  margin-left: 60px;
 }
 
 .wallpost li.right .wallpost-body
 {
-    margin-right: 60px;
+  margin-right: 60px;
 }
 
 
 .wallpost li .wallpost-body p
 {
-    margin: 0;
-    color: #777777;
+  margin: 0;
+  color: #777777;
+}
+
+.wallpost-body p{
+  font-weight:bolder;
+  font-size:16px;
+  margin-left:6px!important;
+}
+
+.post-body{
+  overflow-y: auto;
+  max-height:150px;
+ /* position: absolute;*/
+/*  top: 35px;
+  bottom: 35px;*/
 }

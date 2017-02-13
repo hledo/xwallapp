@@ -1,4 +1,4 @@
-var wallApp = angular.module('wallApp',['ngRoute', 'restService','authService', 'ngAnimate', 'oitozero.ngSweetAlert']);
+var wallApp = angular.module('wallApp',['ngRoute', 'restService','authService', 'ngAnimate', 'oitozero.ngSweetAlert', 'infinite-scroll', 'btford.socket-io', 'socketService']);
 
 //Fixing url hash
 wallApp.config(['$locationProvider', function($locationProvider) {
@@ -31,12 +31,12 @@ wallApp.config(function($routeProvider, $locationProvider){
 
 	.when('/login',{
 		controller:'mainController',
-		templateUrl:'views/login.html',
+		templateUrl:'views/auth/login.html',
 		authenticated:false
 	})
 
 	.when('/logout',{
-		templateUrl:'views/logout.html',
+		templateUrl:'views/auth/logout.html',
 		authenticated:true
 	})	
 
@@ -50,21 +50,21 @@ wallApp.config(function($routeProvider, $locationProvider){
 	.when('/activate/:token',{
 		controller:'emailController',
 		controllerAs: 'email',
-		templateUrl:'views/activate.html',
+		templateUrl:'views/auth/activate.html',
 		authenticated:false
 	})
 
 	.when('/passwordrecovery',{
 		controller:'passwordController',
 		controllerAs: 'pass',
-		templateUrl:'views/passreset.html',
+		templateUrl:'views/auth/passreset.html',
 		authenticated:false
 	})
 
 	.when('/reset/:token',{
 		controller:'resetController',
 		controllerAs: 'reset',
-		templateUrl:'views/newpassword.html',
+		templateUrl:'views/auth/newpassword.html',
 		authenticated:false
 	})
 
