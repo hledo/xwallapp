@@ -10,8 +10,8 @@ module.exports = function(router, io){
 	//Sendgrid credentials object for email sending
 	var options = {
 		auth:{
-			api_user: 'ximplittest',
-			api_key: '@Ximplit1'
+			api_user: 'xxxx',
+			api_key: 'xxxx'
 		}
 	}
 	var client= nodemailer.createTransport(sgTransport(options));
