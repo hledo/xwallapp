@@ -49,7 +49,7 @@ module.exports = function(router, io){
 				}else{
 					//Activation email sending
 					var email = {
-						from: 'Wall Admin Team, hgatoledo@gmail.com',
+						from: 'Wall Admin Team, vacantes@ximplit.com',
 						to: user.email,
 						subject: 'Account activation',
 						text: 'Hello '+user.first_name+', Thank you for registering at The Wall. In order to Log in and post any messages, please click on the activation link below: http://localhost/wallapp/#/activate/'+user.temporaryToken,
@@ -149,7 +149,7 @@ module.exports = function(router, io){
 								console.log(err);
 							}else{
 								var email = {
-									from: 'Wall Admin Team, hgatoledo@gmail.com',
+									from: 'Wall Admin Team, vacantes@ximplit.com',
 									to: user.email,
 									subject: 'Account activated!',
 									text: 'Hello '+user.first_name+', Your account has been successfully activated!',
@@ -186,7 +186,7 @@ module.exports = function(router, io){
 
 						//Sending actual password reset email
 						var email = {
-							from: 'Wall Admin Team, hgatoledo@gmail.com',
+							from: 'Wall Admin Team, vacantes@ximplit.com',
 							to: user.email,
 							subject: 'Password reset request',
 							text: 'Hello, You recently requested your password to be reset. Please click on the link below in order to reset your password. http://localhost/wallapp/#/reset/'+user.resettoken,
